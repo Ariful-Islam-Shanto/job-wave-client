@@ -13,7 +13,7 @@ const Card = ({job}) => {
           className="w-full h-full object-cover"
         />
        </div>
-        <button className="border-[#4640DE] border-2 rounded-sm px-3 py-1 text-[#4640DE] text-xs">{category}</button>
+        <button className="border-[#0146B1] border-2 rounded-sm px-3 py-1 text-[#4640DE] text-xs">{category}</button>
       </figure>
       <div className="flex flex-col flex-grow items-left justify-between space-y-2">
         <h2 className="font-bold flex items-center justify-between">
@@ -23,7 +23,7 @@ const Card = ({job}) => {
         <p className="text-gray-600 text-sm flex-grow">{name} : {location} </p>
         <p className="text-xs text-gray-600 flex items-center justify-between"><span>Post Date: {postDate}</span> <span>Deadline : {deadline}</span></p>
         <div className="card-actions flex-grow flex items-center justify-between">
-          <button className=" text-xs text-white bg-[#4640DE] px-3 py-2">View details</button>
+          <button className=" text-xs text-white bg-[#0146B1] px-3 py-2">View details</button>
           <div className="badge bg-lime-200">Applied : {applicants}</div>
         </div>
       </div>

@@ -47,6 +47,7 @@ const Nav = () => {
       <NavLink to={'/'}>Home</NavLink>
       <NavLink to={'/register'}>About Us</NavLink>
       <NavLink to={'/addJob'}>Add Job</NavLink>
+      <NavLink to={'/myJobs'}>My Jobs</NavLink>
       { !user && <NavLink to={'/register'}>Register</NavLink>}
      { !user && <NavLink to={'/login'}>Login</NavLink> }
     </ul>
@@ -57,10 +58,10 @@ const Nav = () => {
    
     <button onClick={() => {
        handleLogOut();
-    }}  className="px-5 py-2 border-none rounded-md bg-[#4640DE]  text-white">LogOut</button> :
+    }}  className="px-5 py-2 border-none rounded-md bg-[#0146B1]  text-white">LogOut</button> :
  <Link className='' to={'/login'}>   <button onClick={() => {
       
-    }}  className="px-5 py-2 border-none rounded-md bg-[#4640DE]  text-white">Sign Up</button></Link>
+    }}  className="px-5 py-2 border-none rounded-md bg-[#0146B1]  text-white">Sign Up</button></Link>
   }
   </div>
 </div>

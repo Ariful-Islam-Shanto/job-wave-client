@@ -9,7 +9,7 @@ const Banner = () => {
         <div  className=' w-full'>
         <div className='flex relative max-w-4xl mx-auto items-center justify-center h-[500px] '>
             <div className='flex-1 space-y-6'>
-                <h1 className='text-6xl font-bold tracking-wide '>Ride the Wave to Your <br /> <span className='text-[#26A4FF]'>Dream Career</span>
+                <h1 className='text-6xl font-bold tracking-wide '>Ride the Wave to Your <br /> <span className='text-[#0146B1]'>Dream Career</span>
                 {/* <span className="bg-gradient-to-r from-[#0650be] to-[#6aa1f2] bg-clip-text text-transparent">Dream Career</span> */}
                 </h1>
                 <p className='text-[#767983] text-sm tracking-wider leading-[20px]'>Jump on board JobWave and ride the currents of opportunity. Connect with top employers, explore job listings, and let us guide you toward your ideal career. Get started today on your path to professional success.</p>
@@ -26,7 +26,7 @@ const Banner = () => {
 
             <div className='absolute z-50 bottom-4 w-2/3 left-0 flex items-center gap-2 border p-4 rounded-md bg-white'>
                     <input type="text" name="" id="" className='px-7 py-2 rounded-md border flex-1' placeholder='Search Jobs'/>
-                    <button className='px-7 py-2 hover:bg-[#4640DE] rounded-md border-none bg-[#4640DE]  text-white hover:text-white drop-shadow-md' >Search</button>
+                    <button className='px-7 py-2 hover:bg-[#00A79D] rounded-md border-none bg-[#00A79D]  text-white hover:text-white drop-shadow-md' >Search</button>
                 </div>
         </div>
         </div>

@@ -5,13 +5,13 @@ import Nav from '../Components/Navbar/Navbar/Nav';
 import JobByCategory from '../Components/Job by category/JobByCategory';
 
 const Home = () => {
-    const bg = {
-        backgroundImage : `url('https://i.ibb.co/XtT0tXx/Desktop-5.png')`,
-        backgroundPosition : 'cover'
-    }
+    // const bg = {
+    //     backgroundImage : `url('https://i.ibb.co/XtT0tXx/Desktop-5.png')`,
+    //     backgroundPosition : 'cover'
+    // }
     return (
         <div>
-        <div style={bg} className=''>
+        <div className='bg-[#F3F7FA]'>
             <Nav></Nav>
             <Banner></Banner>
         </div>
