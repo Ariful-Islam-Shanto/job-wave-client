@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Nav from '../../Components/Navbar/Navbar/Nav';
+import { AuthContext } from '../../Auth Provider/AuthProvider';
 
 const Login = () => {
+    const {userLogIn} = useContext(AuthContext);
 
     const handleLogIn = (e) => {
         e.preventDefault();
@@ -8,19 +11,37 @@ const Login = () => {
         const email = form.get('email'); 
         const password = form.get('password'); 
         console.log(email, password);
+
+        userLogIn(email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          alert('Successfully signed in');
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+          console.log(error);
+        });
+
     }
 
-    const bg = {
-        backgroundImage : `url('https://i.ibb.co/r5Gtk7G/Login-Bg.jpg')`,
-        // backgroundImage : `url('https://i.ibb.co/3s9tVCm/Vector-3.png')`,
-        backgroundPosition : 'left'
-    }
+    // const bg = {
+    //     backgroundImage : `url('https://i.ibb.co/r5Gtk7G/Login-Bg.jpg')`,
+    //     // backgroundImage : `url('https://i.ibb.co/3s9tVCm/Vector-3.png')`,
+    //     backgroundSize : 'cover'
+    // }
     return (
-        <div style={bg} className='h-screen bg-cover py-12'>
-           
+        <div className='h-screen bg-cover '>
+            <div className=''>
+           <Nav></Nav>
+           </div>
   {/* <div className="relative grid mx-4 mb-4 -mt-6 overflow-hidden text-white shadow-lg h-28 place-items-center rounded-xl bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-border shadow-pink-500/40"> */}
- 
-    <div className='flex h-full my-auto'>
+ <div className='  max-w-4xl mx-auto'>
+    <div className='flex h-full my-auto '>
    <div className='flex-1'>
         {/* <img src="https://i.ibb.co/3s9tVCm/Vector-3.png" alt="" className='h-full w-full'/> */}
    </div>
@@ -105,6 +126,7 @@ const Login = () => {
     </p>
   </div>
   </form>
+  </div>
   </div>
 </div>
     );

@@ -1,7 +1,25 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../../../Auth Provider/AuthProvider';
+
 
 const Nav = () => {
+  const {user, logOut} = useContext(AuthContext);
+
+
+  const navigate = useNavigate();
+
+
+  const handleLogOut = () => {
+    logOut() 
+    .then(() => {
+      alert('Successfully logged out')
+    })
+    .catch((error) => {
+    // An error happened.
+    console.log(error);
+  })
+  }
     return (
         <div className=' w-full py-6' >
  <div className="navbar max-w-4xl mx-auto">
@@ -27,12 +45,22 @@ const Nav = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal flex gap-12 px-1">
       <NavLink to={'/'}>Home</NavLink>
-      <NavLink to={'/'}>About Us</NavLink>
-      <NavLink to={'/login'}>Login</NavLink>
+      <NavLink to={'/register'}>About Us</NavLink>
+      { !user && <NavLink to={'/register'}>Register</NavLink>}
+     { !user && <NavLink to={'/login'}>Login</NavLink> }
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn bg-[#4640DE]  text-white">Sign Up</a>
+    {
+      user ? 
+   
+    <button onClick={() => {
+       handleLogOut();
+    }}  className="px-5 py-2 border-none rounded-md bg-[#4640DE]  text-white">LogOut</button> :
+ <Link className='' to={'/login'}>   <button onClick={() => {
+      
+    }}  className="px-5 py-2 border-none rounded-md bg-[#4640DE]  text-white">Sign Up</button></Link>
+  }
   </div>
 </div>
         </div>
