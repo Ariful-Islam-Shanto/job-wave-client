@@ -1,0 +1,16 @@
+.custom-tab {
+    /* Customize individual tabs */
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+  }
+
+
+/* Custom CSS for active tab */
+.custom-tab-selected {
+    background-color: #4640DE;
+    padding: 8px 20px; 
+    color: #fff;
+    font-weight: bold; /* Add bold font for the active tab */ /* Border for the active tab */
+    border: none; /* Hide the bottom border for active tab */
+  }
+  
