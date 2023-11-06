@@ -31,8 +31,8 @@ const JobByCategory = () => {
             <div className='max-w-4xl mx-auto py-12 space-y-12'>
                 <h1 className='text-4xl text-black font-bold'>Explore by <span className='text-[#26A4FF]'>Category</span></h1>
             <div className=''>
-                <Tabs selectedIndex={tabIndex || 0} onSelect={(index) => setTabIndex(index)} className={'border-2 h-full border-red-400'}>
-                    <TabList className={'flex items-center justify-center w-full h-full mx-auto border-2 border-black'}>
+                <Tabs selectedIndex={tabIndex || 0} onSelect={(index) => setTabIndex(index)} className={' h-full'}>
+                    <TabList className={'flex items-center justify-center w-full h-full mx-auto'}>
                         {categories.map((category, index) => (
                             <Tab onClick={() => handleCategory(category)} className={`${tabIndex === index ? 'custom-tab-selected' : 'custom-tab btn btn-ghost'}`} key={index}>{category}</Tab >
                         ))}

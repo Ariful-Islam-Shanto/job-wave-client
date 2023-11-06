@@ -28,7 +28,7 @@ const Nav = () => {
     <ul className="menu menu-horizontal flex gap-12 px-1">
       <NavLink to={'/'}>Home</NavLink>
       <NavLink to={'/'}>About Us</NavLink>
-      <NavLink to={'/'}>Login</NavLink>
+      <NavLink to={'/login'}>Login</NavLink>
     </ul>
   </div>
   <div className="navbar-end">
