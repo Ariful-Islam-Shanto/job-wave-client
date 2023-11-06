@@ -40,7 +40,7 @@ const JobByCategory = () => {
 
                     { categories.map((cate, index) => (
                         <TabPanel key={index}>
-                            <div className='grid grid-cols-3 py-12 gap-8'>
+                            <div className='grid grid-cols-2 py-12 gap-8'>
                                 {
                                   categoryData.length > 0 &&  categoryData?.map((job, index )=> 
                                   <Card key={job._id} job={job}></Card>)

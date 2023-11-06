@@ -47,7 +47,9 @@ const Register = () => {
     }
 
     const bg = {
-        backgroundImage : `url('https://i.ibb.co/kSFDdY4/Cover.jpg')`,
+        backgroundImage : `url('https://i.ibb.co/Q8JJg2R/Background-1.png')`,
+        // backgroundImage : `url('https://i.ibb.co/fqhsNQy/OC-11-1.jpg')`,
+        // backgroundImage : `url('https://i.ibb.co/kSFDdY4/Cover.jpg')`,
         backgroundSize : 'cover'
     }
 

@@ -16,10 +16,15 @@ const Card = ({job}) => {
         <button className="border-[#4640DE] border-2 rounded-sm px-3 py-1 text-[#4640DE] text-xs">{category}</button>
       </figure>
       <div className="flex flex-col flex-grow items-left justify-between space-y-2">
-        <h2 className="text-md  font-bold">{title}</h2>
-        <p className="text-gray-600 text-sm flex-grow">{name} : {location}</p>
-        <div className="card-actions flex-grow">
+        <h2 className="font-bold flex items-center justify-between">
+          <span className="text-md">{title} </span>
+          <span className="text-sm">Salary: {salary}</span>
+        </h2>
+        <p className="text-gray-600 text-sm flex-grow">{name} : {location} </p>
+        <p className="text-xs text-gray-600 flex items-center justify-between"><span>Post Date: {postDate}</span> <span>Deadline : {deadline}</span></p>
+        <div className="card-actions flex-grow flex items-center justify-between">
           <button className=" text-xs text-white bg-[#4640DE] px-3 py-2">View details</button>
+          <div className="badge bg-lime-200">Applied : {applicants}</div>
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import Nav from '../../Components/Navbar/Navbar/Nav';
 import { AuthContext } from '../../Auth Provider/AuthProvider';
+import Lottie from 'lottie-react';
+import RocketAnimation from '../../assets/Animation - 1699243185332.json';
 
 const Login = () => {
     const {userLogIn} = useContext(AuthContext);
@@ -29,20 +31,24 @@ const Login = () => {
 
     }
 
-    // const bg = {
-    //     backgroundImage : `url('https://i.ibb.co/r5Gtk7G/Login-Bg.jpg')`,
-    //     // backgroundImage : `url('https://i.ibb.co/3s9tVCm/Vector-3.png')`,
-    //     backgroundSize : 'cover'
-    // }
+    const bg = {
+        backgroundImage : `url('https://i.ibb.co/PDkrCKf/OC-10-1.jpg')`,
+        // backgroundImage : `url('https://i.ibb.co/r5Gtk7G/Login-Bg.jpg')`,
+        // backgroundImage : `url('https://i.ibb.co/3s9tVCm/Vector-3.png')`,
+        backgroundSize : 'cover',
+        backgroundPosition : 'center'
+    }
     return (
-        <div className='h-screen bg-cover '>
+        <div style={bg} className='h-screen bg-cover bg-black'>
             <div className=''>
            <Nav></Nav>
            </div>
   {/* <div className="relative grid mx-4 mb-4 -mt-6 overflow-hidden text-white shadow-lg h-28 place-items-center rounded-xl bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-border shadow-pink-500/40"> */}
  <div className='  max-w-4xl mx-auto'>
-    <div className='flex h-full my-auto '>
+    <div className='flex gap-2 h-full my-auto '>
    <div className='flex-1'>
+   <Lottie animationData={RocketAnimation} loop={true} />
+       
         {/* <img src="https://i.ibb.co/3s9tVCm/Vector-3.png" alt="" className='h-full w-full'/> */}
    </div>
  

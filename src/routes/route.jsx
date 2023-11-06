@@ -4,6 +4,7 @@ import Root from '../Main Layout/Root';
 import Home from '../Pages/Home';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
+import AddAJob from '../Pages/Add A Job/AddAJob';
 
 const route = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const route = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/addJob',
+                element : <AddAJob></AddAJob>
             }
         ]
     }

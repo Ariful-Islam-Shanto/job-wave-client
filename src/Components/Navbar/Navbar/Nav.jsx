@@ -46,6 +46,7 @@ const Nav = () => {
     <ul className="menu menu-horizontal flex gap-12 px-1">
       <NavLink to={'/'}>Home</NavLink>
       <NavLink to={'/register'}>About Us</NavLink>
+      <NavLink to={'/addJob'}>Add Job</NavLink>
       { !user && <NavLink to={'/register'}>Register</NavLink>}
      { !user && <NavLink to={'/login'}>Login</NavLink> }
     </ul>
