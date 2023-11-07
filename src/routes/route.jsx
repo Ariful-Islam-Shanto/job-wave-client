@@ -8,12 +8,14 @@ import AddAJob from '../Pages/Add A Job/AddAJob';
 import MyJobs from '../Pages/My Job/MyJob';
 import JobDetails from '../Components/JobDetails/JobDetails';
 import AllJobs from '../Pages/All Jobs/AllJobs';
+import Error from '../Pages/Error Page/Error';
 
 
 const route = createBrowserRouter([
     {
         path : '/',
         element : <Root></Root>,
+        errorElement : <Error></Error>,
         children : [
             {
                 path: '/',
