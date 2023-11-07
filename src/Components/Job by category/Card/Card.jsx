@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({job}) => {
-    const {_id,id,category,name,title,postDate,deadline,salary,applicants,description,location,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,companyWebsite, brandImage} = job || {};
+  const navigate = useNavigate();
+    
+  const {_id,id,category,name,title,postDate,deadline,salary,applicants,description,location,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,companyWebsite, brandImage} = job || {};
   return (
     <div className="">
     <div className="p-10 drop-shadow-sm border space-y-6">
@@ -23,7 +26,9 @@ const Card = ({job}) => {
         <p className="text-gray-600 text-sm flex-grow">{name} : {location} </p>
         <p className="text-xs text-gray-600 flex items-center justify-between"><span>Post Date: {postDate}</span> <span>Deadline : {deadline}</span></p>
         <div className="card-actions flex-grow flex items-center justify-between">
-          <button className=" text-xs text-white bg-[#0146B1] px-3 py-2">View details</button>
+          <button onClick={() => {
+                navigate(`/job/${_id}`);
+          }} className=" text-xs text-white bg-[#0146B1] px-3 py-2">View details</button>
           <div className="badge bg-lime-200">Applied : {applicants}</div>
         </div>
       </div>

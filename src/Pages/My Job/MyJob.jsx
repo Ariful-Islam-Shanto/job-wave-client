@@ -4,14 +4,17 @@ import Nav from '../../Components/Navbar/Navbar/Nav';
 import Card from './Card';
 
 const MyJobs = () => {
-    const {user} = useContext(AuthContext);
+    const {user, loading} = useContext(AuthContext);
     const [myJobs, setMyJobs] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/jobCategories?email=msakjshe@gmail.com`)
-    .then(res => res.json())
-    .then(data => setMyJobs(data ))
-    }, [])
+        if(user) { 
+            fetch(`http://localhost:5000/jobCategories?email=${user?.email ? user?.email : ''}`)
+        .then(res => res.json())
+        .then(data => setMyJobs(data ))
+        }
+        return;
+    }, [user]);
  
     
     console.log(myJobs);
@@ -35,7 +38,7 @@ const MyJobs = () => {
           <th>Actions</th>
         </tr>
       </thead>
-                {
+                { user &&
                     myJobs?.map(job => <Card key={job._id} job={job}></Card>)
                 }
                    </table>
