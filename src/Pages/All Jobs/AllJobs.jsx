@@ -2,12 +2,31 @@ import React, { useState } from "react";
 import Nav from "../../Components/Navbar/Navbar/Nav";
 import { useLoaderData } from "react-router-dom";
 import Table from "./Table/Table";
+import { useQuery } from "@tanstack/react-query";
 
 const AllJobs = () => {
-  const data = useLoaderData();
-  const [jobs, setMyJobs] = useState(data || []);
+  const loderData = useLoaderData();
+  const [jobs, setMyJobs] = useState([]);
+  const [title, setTitle] = useState('');
 
-  console.log(jobs);
+  const {data : jobsData, isLoading, isError, error, refetch } = useQuery({
+    queryKey : ['AllJobs'],
+    queryFn : async () => {
+        const queryData = await fetch(`http://localhost:5000/AllJobs?title=${title}`);
+        const result = await queryData.json();
+        return result;
+    }
+  })
+
+  const handleTitle = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const title = form.get('title');
+    console.log(title);
+    setTitle(title);
+    refetch();
+  }
+
   return (
     <div>
       <Nav></Nav>
@@ -16,13 +35,15 @@ const AllJobs = () => {
 
         {/* //? Search Input Field */}
         <div className="bg-white rounded-md p-4 flex items-center justify-start gap-3  w-2/3">
-          <input type="text" placeholder="Search by title" className="h- text-lg px-5 py-2 w-3/4 border" />
+            <form onSubmit={handleTitle} className="w-full flex gap-4">
+          <input name="title" type="text" placeholder="Search by title" className="h- text-lg px-5 py-2 w-3/4 border" />
           <button
-            onClick={() => {}}
+            type="submit"
             className="px-4 py-2 border-none rounded-md text-lg bg-[#0146B1] w-1/4 text-white"
           >
             Search
           </button>
+          </form>
         </div>
         <div className="overflow-x-auto">
           <table className="table ">
@@ -36,7 +57,7 @@ const AllJobs = () => {
                 <th>Actions</th>
               </tr>
             </thead>
-            {jobs?.map((job) => (
+            {jobsData?.map((job) => (
               <Table key={job._id} job={job}></Table>
             ))}
           </table>

@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Auth Provider/AuthProvider';
 import { FaUser } from 'react-icons/fa6';
 
 const Table = ({job}) => {
-
+    const navigate = useNavigate();
     const {user} = useContext(AuthContext);
 
     const {_id,id,category,name,title,postDate,deadline,salary,applicants,description,location, jobBanner, brandImage} = job || {}
@@ -41,8 +42,9 @@ const Table = ({job}) => {
           </td>
           <td>{salary}</td>
           <th className="flex flex-col items-center justify-center">
-            <button className="btn btn-ghost btn-xs">Update</button>
-            <button className="btn btn-ghost btn-xs">Delete</button>
+            <button onClick={() => {
+                navigate(`/job/${_id}`)
+            }} className="btn btn-ghost btn-xs">Details</button>
           </th>
         </tr>
        
