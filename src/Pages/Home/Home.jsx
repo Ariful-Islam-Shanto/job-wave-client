@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import Nav from '../../Components/Navbar/Navbar/Nav';
 import JobByCategory from '../../Components/Job by category/JobByCategory';
 import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
+import CallToAction from '../../Components/CallToAction/CallToAction';
 
 const Home = () => {
     // const bg = {
@@ -18,6 +19,7 @@ const Home = () => {
         </div>
         <JobByCategory></JobByCategory>
         <WhyChooseUs></WhyChooseUs>
+        <CallToAction></CallToAction>
         </div>
     );
 };
