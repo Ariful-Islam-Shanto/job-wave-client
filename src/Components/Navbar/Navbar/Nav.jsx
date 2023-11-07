@@ -19,10 +19,11 @@ const Nav = () => {
     // An error happened.
     console.log(error);
   })
+
   }
     return (
         <div className=' w-full py-6' >
- <div className="navbar max-w-4xl mx-auto">
+ <div className="navbar max-w-6xl mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -46,20 +47,37 @@ const Nav = () => {
     <ul className="menu menu-horizontal flex gap-12 px-1">
       <NavLink to={'/'}>Home</NavLink>
       <NavLink to={'/register'}>About Us</NavLink>
-      <NavLink to={'/allJobs'}>All Jobs</NavLink>
+      
+      { user && <> <NavLink to={'/allJobs'}>All Jobs</NavLink>
       <NavLink to={'/addJob'}>Add Job</NavLink>
-      <NavLink to={'/myJobs'}>My Jobs</NavLink>
+      <NavLink to={'/myJobs'}>My Jobs</NavLink> 
+      </>
+      }
       { !user && <NavLink to={'/register'}>Register</NavLink>}
      { !user && <NavLink to={'/login'}>Login</NavLink> }
     </ul>
   </div>
+  
+  
   <div className="navbar-end">
     {
-      user ? 
+      user ? <> 
+      <div className='flex items-center justify-center gap-3 mr-4'>
+      {user && <> <div className="avatar">
+    <div className="w-10 rounded-full">
+      <img src={user.photoURL} />
+    </div>
+  </div>
+  <h1>{user.displayName || user.email}</h1>
+  </>
+  }
+    </div>
    
     <button onClick={() => {
        handleLogOut();
-    }}  className="px-5 py-2 border-none rounded-md bg-[#0146B1]  text-white">LogOut</button> :
+    }}  className="px-5 py-2 border-none rounded-md bg-[#0146B1]  text-white">LogOut</button>
+</>
+     :
  <Link className='' to={'/login'}>   <button onClick={() => {
       
     }}  className="px-5 py-2 border-none rounded-md bg-[#0146B1]  text-white">Sign Up</button></Link>

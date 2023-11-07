@@ -28,8 +28,8 @@ const JobByCategory = () => {
 
     return (
         <div>
-            <div className='max-w-4xl mx-auto py-12 space-y-12'>
-                <h1 className='text-4xl text-black font-bold'>Explore by <span className='text-[#0146B1]'>Category</span></h1>
+            <div className='max-w-6xl mx-auto py-12 space-y-12'>
+                <h1 className='text-4xl text-black text-center font-bold'>Explore by <span className='text-[#0146B1]'>Category</span></h1>
             <div className=''>
                 <Tabs selectedIndex={tabIndex || 0} onSelect={(index) => setTabIndex(index)} className={' h-full'}>
                     <TabList className={'flex items-center justify-center w-full h-full mx-auto gap-6'}>
