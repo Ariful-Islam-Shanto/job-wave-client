@@ -1,8 +1,9 @@
 import React from 'react';
-import Banner from '../Components/Banner/Banner';
+import Banner from '../../Components/Banner/Banner';
 import 'react-tabs/style/react-tabs.css';
-import Nav from '../Components/Navbar/Navbar/Nav';
-import JobByCategory from '../Components/Job by category/JobByCategory';
+import Nav from '../../Components/Navbar/Navbar/Nav';
+import JobByCategory from '../../Components/Job by category/JobByCategory';
+import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
     // const bg = {
@@ -16,6 +17,7 @@ const Home = () => {
             <Banner></Banner>
         </div>
         <JobByCategory></JobByCategory>
+        <WhyChooseUs></WhyChooseUs>
         </div>
     );
 };
