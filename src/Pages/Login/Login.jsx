@@ -33,9 +33,7 @@ const Login = () => {
     }
 
     const bg = {
-        backgroundImage : `url('https://i.ibb.co/PDkrCKf/OC-10-1.jpg')`,
-        // backgroundImage : `url('https://i.ibb.co/r5Gtk7G/Login-Bg.jpg')`,
-        // backgroundImage : `url('https://i.ibb.co/3s9tVCm/Vector-3.png')`,
+        backgroundImage : `url('https://i.ibb.co/tX4FbVK/Good-Night-1.jpg')`,
         backgroundSize : 'cover',
         backgroundPosition : 'center'
     }
@@ -45,7 +43,7 @@ const Login = () => {
            <Nav></Nav>
            </div>
   {/* <div className="relative grid mx-4 mb-4 -mt-6 overflow-hidden text-white shadow-lg h-28 place-items-center rounded-xl bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-border shadow-pink-500/40"> */}
- <div className='min-h-screen  max-w-6xl mx-auto'>
+ <div className='min-h-screen px-6 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto'>
     <div className='flex gap-2 h-full my-auto items-center justify-center'>
    <div className='flex-1 flex h-full items-center justify-center'>
     <div className='h-1/3'>

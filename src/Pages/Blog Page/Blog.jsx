@@ -5,7 +5,7 @@ const Blog = () => {
   return (
     <div>
       <Nav></Nav>
-      <div className="max-w-6xl mx-auto space-y-12">
+      <div className=" max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto space-y-12 px-6">
         <img
           src="https://i.ibb.co/C1Q1Mds/top-view-workspace-with-laptop-notebook.jpg"
           alt=""

@@ -9,7 +9,7 @@ const MyJobs = () => {
 
     useEffect(() => {
         if(user) { 
-            fetch(`http://localhost:5000/jobCategories?email=${user?.email}`)
+            fetch(`http://localhost:5000/jobCategories?email=${user?.email}`, {credentials: 'include'})
         .then(res => res.json())
         .then(data => setMyJobs(data ))
         }
@@ -37,8 +37,9 @@ const MyJobs = () => {
           <th>Salary</th>
           <th>Actions</th>
         </tr>
+       
       </thead>
-                { user &&
+                {myJobs.length > 0 &&
                     myJobs?.map(job => <Card key={job._id} job={job}></Card>)
                 }
                    </table>

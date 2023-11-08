@@ -49,8 +49,6 @@ const Register = () => {
 
     const bg = {
         backgroundImage : `url('https://i.ibb.co/Q8JJg2R/Background-1.png')`,
-        // backgroundImage : `url('https://i.ibb.co/fqhsNQy/OC-11-1.jpg')`,
-        // backgroundImage : `url('https://i.ibb.co/kSFDdY4/Cover.jpg')`,
         backgroundSize : 'cover'
     }
 
@@ -165,7 +163,7 @@ const Register = () => {
       Already have an account?
       <a
         className="font-medium text-pink-500 transition-colors hover:text-blue-700"
-        href="#"
+        href="/login"
       >
         Sign In
       </a>

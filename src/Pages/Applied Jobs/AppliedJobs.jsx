@@ -43,11 +43,11 @@ const AppliedJobs = () => {
         <div>
     <div>
       <Nav></Nav>
-      <div className="text-6xl max-w-6xl mx-auto">
+      <div className="text-6xl max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4 md:px-0 lg:px-0 xl:px-0">
         <h1 className="text-4xl text-black font-bold">My Applied Jobs</h1>
 
         {/* //? Search Input Field */}
-        <div className="bg-white rounded-md p-4 w-full">
+        <div className="bg-white drop-shadow-md rounded-md p-4 w-full">
             {/* <form onSubmit={handleTitle} className="w-full flex gap-4">
           <input name="title" type="text" placeholder="Search by title" className="h- text-lg px-5 py-2 w-3/4 border" />
           <button
@@ -58,7 +58,7 @@ const AppliedJobs = () => {
           </button>
           </form> */}
            <div className='text-xl'>
-      <label>Select an option:</label>
+      <label>Choose by category:</label>
       <select  value={category} onChange={handleCategory}>
         {/* <option disabled selected value="">Select An Option</option> */}
         <option value="AllJobs">All</option>
@@ -71,7 +71,7 @@ const AppliedJobs = () => {
     </div>
         </div>
         <div className="overflow-x-auto">
-          <table className="table ">
+          <table className="table max-w-xl">
             {/* head */}
             <thead>
               <tr>
