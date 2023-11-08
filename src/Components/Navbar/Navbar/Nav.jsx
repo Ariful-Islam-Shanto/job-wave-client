@@ -46,7 +46,7 @@ const Nav = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal flex gap-12 px-1">
       <NavLink to={'/'}>Home</NavLink>
-      <NavLink to={'/register'}>About Us</NavLink>
+      <NavLink to={'/blog'}>Blog</NavLink>
       
       { user && <> <NavLink to={'/allJobs'}>All Jobs</NavLink>
       <NavLink to={'/addJob'}>Add Job</NavLink>

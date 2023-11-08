@@ -10,6 +10,7 @@ import JobDetails from '../Components/JobDetails/JobDetails';
 import AllJobs from '../Pages/All Jobs/AllJobs';
 import Error from '../Pages/Error Page/Error';
 import AppliedJobs from '../Pages/Applied Jobs/AppliedJobs';
+import Blog from '../Pages/Blog Page/Blog';
 
 
 
@@ -53,6 +54,10 @@ const route = createBrowserRouter([
                 element : <AllJobs></AllJobs>,
                 loader : () => fetch('http://localhost:5000/jobCategories')
             },
+            {
+                path : '/blog',
+                element : <Blog></Blog>
+            }
         ]
     }
 ])
