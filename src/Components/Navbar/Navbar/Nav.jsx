@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../../Auth Provider/AuthProvider';
+import toast from 'react-hot-toast';
+import { FaUser } from 'react-icons/fa6';
 
 
 const Nav = () => {
   const {user, logOut} = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
 
 
   const navigate = useNavigate();
@@ -13,7 +16,8 @@ const Nav = () => {
   const handleLogOut = () => {
     logOut() 
     .then(() => {
-      alert('Successfully logged out')
+      toast.success('Successfully logged out');
+      navigate('/login');
     })
     .catch((error) => {
     // An error happened.
@@ -22,8 +26,8 @@ const Nav = () => {
 
   }
     return (
-        <div className=' w-full py-6' >
- <div className="navbar max-w-6xl mx-auto">
+        <div className=' py-6' >
+ <div className="navbar w-full md:px-0 lg:px-0 xl:px-0 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -44,7 +48,7 @@ const Nav = () => {
     <a className="btn btn-ghost normal-case text-2xl font-bold">JobWave</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal flex gap-12 px-1">
+    <ul className="menu menu-horizontal flex lg:gap-6 xl:gap-12 px-1">
       <NavLink to={'/'}>Home</NavLink>
       <NavLink to={'/blog'}>Blog</NavLink>
       
@@ -63,13 +67,23 @@ const Nav = () => {
   <div className="navbar-end">
     {
       user ? <> 
-      <div className='flex items-center justify-center gap-3 mr-4'>
+      <div className='relative flex items-center justify-center gap-3 mr-4'>
       {user && <> <div className="avatar">
-    <div className="w-10 rounded-full">
+    <div onClick={() => {
+          setOpen(!open);
+    }} className="w-10 rounded-full">
+      {user.photoURL ? 
       <img src={user.photoURL} />
+        :
+        <FaUser className='h-full w-full'></FaUser>
+    }
     </div>
   </div>
-  <h1>{user.displayName || user.email}</h1>
+  <div className=' sm:absolute md:absolute lg:absolute xl:static top-12'>
+{ open ? <h1 className='bg-white rounded-md p-2'>{user.displayName || user.email}</h1> : ''}
+
+<h1 className='hidden md:hidden lg:hidden'>{user.displayName || user.email}</h1> 
+</div>
   </>
   }
     </div>

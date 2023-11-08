@@ -44,11 +44,11 @@ const JobByCategory = () => {
 
     return (
         <div>
-            <div className='max-w-6xl mx-auto py-12 space-y-12'>
+            <div className='w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto py-12 space-y-12'>
                 <h1 className='text-4xl text-black text-center font-bold'>Explore by <span className='text-[#0146B1]'>Category</span></h1>
             <div className=''>
                 <Tabs selectedIndex={tabIndex || 0} onSelect={(index) => setTabIndex(index)} className={' h-full'}>
-                    <TabList className={'flex items-center justify-center w-full h-full mx-auto gap-6'}>
+                    <TabList className={'flex items-center justify-center w-full h-full mx-auto gap-0 md:gap-6 lg:gap-6 xl:gap-6'}>
                         {categories.map((category, index) => (
                             <Tab onClick={() => handleCategory(category)} className={`${tabIndex === index ? 'custom-tab-selected' : 'custom-tab btn btn-ghost'}`} key={index}>{category}</Tab >
                         ))}
@@ -56,7 +56,7 @@ const JobByCategory = () => {
 
                     { categories.map((cate, index) => (
                         <TabPanel key={index}>
-                            <div className='grid grid-cols-2 py-12 gap-8'>
+                            <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 py-12 gap-8'>
                                 {
                                   categoryData.length > 0 &&  categoryData?.map((job, index )=> 
                                   <Card key={job._id} job={job}></Card>)

@@ -12,9 +12,8 @@ import Error from '../Pages/Error Page/Error';
 import AppliedJobs from '../Pages/Applied Jobs/AppliedJobs';
 import Blog from '../Pages/Blog Page/Blog';
 import Update from '../Components/Update/Update';
-import useAxios from '../Hooks/useAxios';
+import axios from 'axios';
 
-const axios = useAxios();
 
 
 const route = createBrowserRouter([
@@ -64,7 +63,7 @@ const route = createBrowserRouter([
             {
                 path : '/update/:id',
                 element: <Update></Update>,
-                loader : ({params}) => axios.get(`/jobById/${params.id}`)
+                loader : ({params}) => axios.get(`http://loaclhost:5000/jobById/${params.id}`)
             }
         ]
     }
