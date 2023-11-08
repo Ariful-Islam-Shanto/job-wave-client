@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import './Tabs.css';
 import Card from './Card/Card';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 const JobByCategory = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -16,12 +18,26 @@ const JobByCategory = () => {
     .then(data => setCategoryData(data ))
     }, [category])
 
+    // const {data : Data , isLoading, error, refetch} = useQuery({
+    //     queryKey : ['allCategoriesData', ''],
+    //     queryFn : async (key, category) => {
+    //         const response = await axios.get(`http://localhost:5000/jobCategories?category=${category}`)
+    //         const result = response.data;
+    //         return result;
+    //     }
+    // })
+
+
     const handleCategory = (category) => {
         if(category === 'AllJobs') {
             category = '';
         }
         setCategory(category)
+        // refetch(category)
+        
     }
+
+   
 
     // const data = Object.keys(categoryData[0])
     // console.log(data.join(','));

@@ -2,17 +2,90 @@ import React, { useContext } from 'react';
 import Nav from '../Navbar/Navbar/Nav';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Auth Provider/AuthProvider';
+import toast from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
+import useAxios from '../../Hooks/useAxios';
 
 const JobDetails = () => {
+    const axios = useAxios();
     const {user} = useContext(AuthContext);
     const job = useLoaderData();
-
-    const {_id,id,category,name,title,postDate,deadline,salary,applicants,description,location,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,jobBanner,brandImage} = job || {};
+    
+    const {_id,id,category,name, email, title,postDate,deadline,salary,applicants,description,location,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,jobBanner,brandImage} = job || {};
 
     console.log(skills);
     const bg = {
         backgroundImage : `url(${jobBanner})`
     }
+    
+    const {mutate : updateApplicants} = useMutation({
+        mutationKey : ['updateApplicants'],
+        mutationFn : async (updateData) => {
+            axios.patch('/updateApplicants', updateData)
+        },
+        onSuccess : () => {
+            toast.success("Updated applicant's data")
+        }
+    })
+
+    const {mutate} = useMutation({
+        mutationKey : ['jobDetails'],
+        mutationFn : async (applyJob) => {
+            return axios.post("/addApplyJob", applyJob)
+        },
+        onSuccess : () => {
+            toast.success("Congratulations. You've applied for the job");
+        }
+    })
+     
+
+    const handleApply = e => {
+        e.preventDefault();
+        const form = new FormData(e.target);
+        const applicantName = form.get('name') ;
+        const inputEmail = form.get('email');
+        const resumeLink = form.get('photo');
+        const lastDate = new Date();
+        const dateNow = Date.now();
+        const targetDate = lastDate.getTime();
+
+        if(dateNow > targetDate) {
+           return toast.error("Deadline is over. Sorry you can't apply now")
+        }
+
+        if(email === user.email) {
+            return toast.error("You can't apply in your job");
+        }
+
+        const applyJob = {
+            applicant_name : applicantName,
+            applicant_email : inputEmail,
+            resume : resumeLink,
+            id : id || "Not given",
+            category : category || 'Not given',
+            name : name || 'Not given',
+             email : email || 'Not  given',
+              title : title || "Not given",
+              postDate : postDate || 'Not given',
+              deadline : deadline || 'Not given',
+              salary : salary || "Not given",
+              applicants : applicants || "Not given",
+              description : description || 'Not given',
+              location : location || 'Not given',
+              skills : skills || "Not given",
+              employmentType : employmentType || 'Not given',
+              benefits : benefits || 'Not given',
+              jobBanner : jobBanner || 'Not given'
+              ,brandImage : brandImage || 'Not given'
+        }
+
+        mutate(applyJob);
+        updateApplicants(job);
+    }
+
+
+ 
+
     return (
         <div>
             <Nav></Nav>
@@ -45,7 +118,7 @@ const JobDetails = () => {
 <button className="btn bg-lime-500 text-gray-50" onClick={()=>document.getElementById('my_modal_5').showModal()}>Apply Now</button>
 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box">
-  <form className="mt-8 mb-2 w-80 max-w-screen-lg mx-auto sm:w-96 h-full bg-transparent backdrop-blur-2xl p-10">
+  <form onSubmit={handleApply} className="mt-8 mb-2 w-80 max-w-screen-lg mx-auto sm:w-96 h-full bg-transparent backdrop-blur-2xl p-10">
           
           <h4 className="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 text-center antialiased">
             Apply

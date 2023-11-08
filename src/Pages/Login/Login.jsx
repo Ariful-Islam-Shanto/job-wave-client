@@ -3,6 +3,7 @@ import Nav from '../../Components/Navbar/Navbar/Nav';
 import { AuthContext } from '../../Auth Provider/AuthProvider';
 import Lottie from 'lottie-react';
 import RocketAnimation from '../../assets/Animation - 1699243185332.json';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const {userLogIn} = useContext(AuthContext);
@@ -18,14 +19,14 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          alert('Successfully signed in');
+          toast.success('Successfully logged in.')
           console.log(user);
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          alert(errorMessage);
+          toast.error(errorMessage);
           console.log(error);
         });
 

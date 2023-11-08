@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Auth Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../../Firebase/firebase.config";
+import toast from "react-hot-toast";
 
 const Register = () => {
 
@@ -32,7 +33,7 @@ const Register = () => {
               });
             // Signed up 
             const user = userCredential.user;
-            alert ('Created account');
+            toast.success('Successfully created account.')
             console.log(user);
 
             // ...
@@ -40,7 +41,7 @@ const Register = () => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert(errorMessage);
+            toast.error(errorMessage);
             console.log(error);
             // ..
           });
