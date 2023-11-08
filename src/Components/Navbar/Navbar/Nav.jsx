@@ -51,6 +51,7 @@ const Nav = () => {
       { user && <> <NavLink to={'/allJobs'}>All Jobs</NavLink>
       <NavLink to={'/addJob'}>Add Job</NavLink>
       <NavLink to={'/myJobs'}>My Jobs</NavLink> 
+      <NavLink to={'/JobApplied'}>Applied Jobs</NavLink> 
       </>
       }
       { !user && <NavLink to={'/register'}>Register</NavLink>}
