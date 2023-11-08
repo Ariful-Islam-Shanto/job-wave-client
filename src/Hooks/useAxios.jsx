@@ -3,8 +3,7 @@ import React from 'react';
 
 const instance = axios.create({
     baseURL: 'http://localhost:5000',
-    timeout: 1000,
-    headers: {'X-Custom-Header': 'foobar'}
+    withCredentials : true
   });
 
 const useAxios = () => {

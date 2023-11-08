@@ -13,7 +13,7 @@ const JobByCategory = () => {
     const categories = [ 'AllJobs', 'Remote', 'Hybrid', 'Part-Time', 'OnSite'];
 
     useEffect(() => {
-        fetch(`http://localhost:5000/jobCategories?category=${category}`)
+        fetch(`http://localhost:5000/jobCategories?category=${category}`, {credentials : 'include'})
     .then(res => res.json())
     .then(data => setCategoryData(data ))
     }, [category])

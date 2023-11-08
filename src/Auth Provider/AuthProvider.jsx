@@ -1,6 +1,7 @@
 import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../Firebase/firebase.config';
+import useAxios from '../Hooks/useAxios';
 
 
 
@@ -8,6 +9,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({children}) => {
     // const [modeTheme, setModeTheme] = useState(null);
+    const axios = useAxios();
     const [user, setUser] = useState([]);
     const [loading, setLoading] = useState(true);
     
@@ -53,14 +55,41 @@ const AuthProvider = ({children}) => {
     //? Observe auth state change (get the currently signed-in user)
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
+
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
             setUser(currentUser);
-            setLoading(true);
+            setLoading(false);
+
+            if (currentUser) {
+                axios
+                  .post(
+                    "/jwt",
+                    loggedUser,
+                    { withCredentials: true }
+                  )
+                  .then((res) => {
+                    console.log(res.data);
+                  });
+              }
+              else {
+                console.log('Log out');
+                axios
+                  .post(
+                    "/clearCookie",
+                    loggedUser
+                  )
+                  .then((res) => {
+                    console.log(res.data);
+                  });
+              }
+              setLoading(true); 
         })
 
         return () => {
             unSubscribe();
         }
-    },[])
+    },[axios])
 
     const authInfo = {user, createUser, userLogIn, loading, githubLogin, googleLogin, facebookLogin, logOut};
 

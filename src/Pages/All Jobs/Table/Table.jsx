@@ -18,8 +18,8 @@ const Table = ({job}) => {
             <div className="flex items-center space-x-3">
               <div className="avatar">
                 <div className="mask mask-squircle w-12 h-12">
-                    {user ?
-                  <img src={user?.email} alt="Avatar Tailwind CSS Component" /> :
+                    {brandImage ?
+                  <img src={brandImage} alt="Avatar Tailwind CSS Component" /> :
                   <FaUser className="text-xl h-full w-full"></FaUser>
                     }
                 </div>
@@ -33,7 +33,6 @@ const Table = ({job}) => {
           <td>
             {title}
             <br/>
-            <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
           </td>
           <td>
             {postDate}

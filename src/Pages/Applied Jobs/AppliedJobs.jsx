@@ -1,25 +1,33 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Nav from '../../Components/Navbar/Navbar/Nav';
 import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../Auth Provider/AuthProvider';
 import Table from './Table Data/Table';
+import useAxios from '../../Hooks/useAxios';
 
 const AppliedJobs = () => {
-
+    const axios = useAxios();
     const [selectedValue, handleSelectChange] = useState('');
     // const loderData = useLoaderData();
     const {user} = useContext(AuthContext);
     const [jobs, setMyJobs] = useState([]);
     const [category, setCategory] = useState('');
   
-    const {data : jobsData, isLoading, isError, error, refetch } = useQuery({
-      queryKey : ['AllApplied'],
-      queryFn : async () => {
-          const queryData = await fetch(`http://localhost:5000/appliedJobs?email=${user.email}&category=${category}`);
-          const result = await queryData.json();
-          return result;
-      }
-    })
+    // const {data : jobsData, isLoading, isError, error, refetch } = useQuery({
+    //   queryKey : ['AllApplied'],
+    //   queryFn : async () => {
+    //       const queryData = await fetch(`http://localhost:5000/appliedJobs?email=${user.email}&category=${category}`);
+    //       const result = await queryData.json();
+    //       return result;
+    //   }
+    // })
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/appliedJobs?email=${user.email}&category=${category}`)
+        .then(res => {
+            setMyJobs(res.data);
+        })
+    }, [axios, category, user.email])
   
     const handleCategory = (e) => {
       e.preventDefault();
@@ -28,7 +36,7 @@ const AppliedJobs = () => {
         category = '';
       }
       setCategory(category);
-      refetch();
+    //   refetch();
     }
 
     return (
@@ -74,7 +82,7 @@ const AppliedJobs = () => {
                 <th>Actions</th>
               </tr>
             </thead>
-            {jobsData?.map((job) => (
+            { jobs.length > 0 && jobs?.map((job) => (
               <Table key={job._id} job={job}></Table>
             ))}
           </table>
