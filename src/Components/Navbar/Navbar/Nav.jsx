@@ -64,7 +64,10 @@ isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
   
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-2xl font-bold">JobWave</a>
+     <div className='flex items-center justify-center'>
+      <img src="https://i.ibb.co/VDryHnj/Logotype-removebg-preview.png" alt="" className='w-10 h-10'/>
+      <h1 className='text-2xl text-black font-medium'>JOBWAVE</h1>
+     </div>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal flex lg:gap-6 xl:gap-12 px-1">
