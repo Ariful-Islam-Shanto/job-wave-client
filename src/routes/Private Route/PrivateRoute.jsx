@@ -7,8 +7,7 @@ const PrivateRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext);
 
     if(loading) {
-        toast.error('Please login to see details');
-        return <Navigate to={'/login'}></Navigate>
+        return <div className='min-h-screen bg-white flex items-center justify-center'><span className="loading loading-spinner loading-lg"></span></div>
     }
     
 

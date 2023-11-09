@@ -1,17 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Nav from '../Navbar/Navbar/Nav';
-import { useLoaderData } from 'react-router-dom';
+import { Await, useLoaderData, useParams } from 'react-router-dom';
 import { AuthContext } from '../../Auth Provider/AuthProvider';
 import toast from 'react-hot-toast';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import useAxios from '../../Hooks/useAxios';
 
 const JobDetails = () => {
+    const queryClient = useQueryClient();
     const axios = useAxios();
     const {user} = useContext(AuthContext);
-    const job = useLoaderData();
+    // const job = useLoaderData();
+    const {id : paramsId} = useParams();
+
+    const {data : job} = useQuery({
+        queryKey : ['detailsData'],
+        queryFn : async () => {
+            const data = await axios.get(`jobById/${paramsId}`)
+            const detailsData = data.data;
+            return detailsData;
+        }
+    })
     
     const {_id,id,category,name, email, title,postDate,deadline,salary,applicants,description,location,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,jobBanner,brandImage} = job || {};
+
+    const [totalApplicats, setTotalApplicants] = useState(applicants)
 
     console.log(job);
     const bg = {
@@ -24,7 +37,8 @@ const JobDetails = () => {
             axios.patch('/updateApplicants', updateData)
         },
         onSuccess : () => {
-            toast.success("Updated applicant's data")
+            queryClient.invalidateQueries({queryKey : ['detailsData']})
+            queryClient.invalidateQueries({queryKey : ['AllJobs']})
         }
     })
 
