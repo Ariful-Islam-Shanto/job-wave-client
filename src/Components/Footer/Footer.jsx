@@ -1,6 +1,28 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+
+    const location = useLocation();
+    const pathName = location.pathname;
+    if(pathName === '/') {
+        document.title = 'JOBWAVE | Home'
+    }else if(pathName === '/login') {
+        document.title = 'JOBWAVE | Login'
+    }else if(pathName === '/register') {
+        document.title = 'JOBWAVE | Register'
+    }else if(pathName === '/allJobs') {
+        document.title = 'JOBWAVE | All Jobs'
+    }else if(pathName === '/blog') {
+        document.title = 'JOBWAVE | Blogs'
+    }else if(pathName === '/addJob') {
+        document.title = 'JOBWAVE | Add a Job'
+    }else if(pathName === '/myJobs') {
+        document.title = 'JOBWAVE | My Jobs'
+    }else if(pathName === '/JobApplied') {
+        document.title = 'JOBWAVE | Applied Jobs'
+    }
+
   return (
     <div>
       <footer className="footer grid px-6 md:px-0 lg:px-0 xl:px-0 grid-cols-2 justify-center  md:grid-cols-4  lg:grid-cols-4 xl:grid-cols-4 pt-12 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl  mx-auto text-base-content">

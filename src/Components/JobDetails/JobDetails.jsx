@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Nav from '../Navbar/Navbar/Nav';
-import { Await, useLoaderData, useParams } from 'react-router-dom';
+import { Await, useLoaderData, useLocation, useParams } from 'react-router-dom';
 import { AuthContext } from '../../Auth Provider/AuthProvider';
 import toast from 'react-hot-toast';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -12,6 +12,10 @@ const JobDetails = () => {
     const {user} = useContext(AuthContext);
     // const job = useLoaderData();
     const {id : paramsId} = useParams();
+    const location  = useLocation();
+    if(location.pathname === `/details/${id}` ) {
+        document.title = 'JOBWAVE | Details'
+    }
 
     const {data : job} = useQuery({
         queryKey : ['detailsData'],
@@ -22,7 +26,7 @@ const JobDetails = () => {
         }
     })
     
-    const {_id,id,category,name, email, title,postDate,deadline,salary,applicants,description,location,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,jobBanner,brandImage} = job || {};
+    const {_id,id,category,name, email, title,postDate,deadline,salary,applicants,description,location:jobLocation,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,jobBanner,brandImage} = job || {};
 
     const [totalApplicats, setTotalApplicants] = useState(applicants)
 
@@ -85,7 +89,7 @@ const JobDetails = () => {
               salary : salary || "Not given",
               applicants : applicants || "Not given",
               description : description || 'Not given',
-              location : location || 'Not given',
+              location : jobLocation || 'Not given',
               skills : skills || "Not given",
               employmentType : employmentType || 'Not given',
               benefits : benefits || 'Not given',
