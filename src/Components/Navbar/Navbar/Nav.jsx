@@ -37,16 +37,16 @@ const Nav = () => {
       <NavLink to={'/'}  className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
   }>Home</NavLink>
-      <NavLink to={'/blog'} className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
-  }>Blog</NavLink>
       <NavLink to={'/allJobs'} className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
   }>All Jobs</NavLink>
+  <NavLink to={'/blog'} className={({ isActive, isPending }) =>
+isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
+}>Blogs</NavLink>
       { user && <> 
       <NavLink to={'/addJob'} className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
-  }>Add Job</NavLink>
+  }>Add A Job</NavLink>
       <NavLink to={'/myJobs'} className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
   }>My Jobs</NavLink> 
@@ -71,16 +71,16 @@ const Nav = () => {
       <NavLink to={'/'}  className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
   }>Home</NavLink>
-      <NavLink to={'/blog'} className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
-  }>Blog</NavLink>
       <NavLink to={'/allJobs'} className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
   }>All Jobs</NavLink>
+      <NavLink to={'/blog'} className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
+  }>Blogs</NavLink>
       { user && <> 
       <NavLink to={'/addJob'} className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
-  }>Add Job</NavLink>
+  }>Add A Job</NavLink>
       <NavLink to={'/myJobs'} className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
   }>My Jobs</NavLink> 
@@ -102,24 +102,23 @@ const Nav = () => {
   <div className="navbar-end">
     {
       user ? <> 
-      <div className='relative flex items-center justify-center gap-3 mr-4'>
-      {user && <> <div className="avatar">
-    <div onClick={() => {
-          setOpen(!open);
-    }} className="w-10 rounded-full">
+      <div className='group flex items-center justify-center gap-3 mr-4'>
+      {user && <div className=''> <div className="avatar relative group">
+    <div className=" w-10 rounded-full group">
       {user.photoURL ? 
-      <img src={user.photoURL} />
+      <img src={user.photoURL} className='group'/>
         :
-        <FaUser className='h-full w-full'></FaUser>
+        <FaUser className='h-full w-full group'></FaUser>
     }
+
+<div className={`group-hover:block hidden sm:absolute md:absolute lg:absolute xl:absolute top-12 right-1 bg-transparent rounded-md backdrop-blur-2xl`}>
+
+<h1 className=' group-hover:block'>{user.displayName || user.email}</h1> 
+</div>
     </div>
   </div>
-  <div className=' sm:absolute md:absolute lg:absolute xl:static top-12'>
-{ open ? <h1 className='bg-white rounded-md p-2'>{user.displayName || user.email}</h1> : ''}
 
-<h1 className='hidden md:hidden lg:hidden'>{user.displayName || user.email}</h1> 
-</div>
-  </>
+  </div>
   }
     </div>
    
@@ -129,7 +128,7 @@ const Nav = () => {
 </>
      :
  <Link className='' to={'/login'}>   <button onClick={() => {
-      
+      navigate('/')
     }}  className="px-5 py-2 border-none rounded-md bg-[#0146B1]  text-white">SignIn</button></Link>
   }
   </div>

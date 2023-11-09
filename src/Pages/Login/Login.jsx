@@ -4,9 +4,10 @@ import { AuthContext } from '../../Auth Provider/AuthProvider';
 import Lottie from 'lottie-react';
 import RocketAnimation from '../../assets/Animation - 1699243185332.json';
 import toast from 'react-hot-toast';
+import { FaGoogle } from 'react-icons/fa6';
 
 const Login = () => {
-    const {userLogIn} = useContext(AuthContext);
+    const {userLogIn, googleLogin} = useContext(AuthContext);
 
     const handleLogIn = (e) => {
         e.preventDefault();
@@ -31,6 +32,17 @@ const Login = () => {
         });
 
     }
+
+    const handleGoogleSignIn = () => {
+      googleLogin()
+      .then(() => {
+       toast.success('Successfully logged in.');
+      })
+      .catch((error) => {
+       toast.error(error.message);
+      })
+ }
+
 
     const bg = {
         backgroundImage : `url('https://i.ibb.co/tX4FbVK/Good-Night-1.jpg')`,
@@ -121,6 +133,11 @@ const Login = () => {
     >
       Sign In
     </button>
+    <div className='flex items-center justify-center flex-col pt-6'>
+    <p>Or sign in with </p>
+     <button onClick={handleGoogleSignIn} className='w-10 h-10 bg-white flex items-center justify-center rounded-full'><FaGoogle className='text-2xl'></FaGoogle></button>
+    </div>
+    
     <p className="flex justify-center mt-6 font-sans text-sm antialiased font-light leading-normal text-inherit text-gray-300">
       Don't have an account?
       <a

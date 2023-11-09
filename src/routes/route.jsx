@@ -13,6 +13,7 @@ import AppliedJobs from '../Pages/Applied Jobs/AppliedJobs';
 import Blog from '../Pages/Blog Page/Blog';
 import Update from '../Components/Update/Update';
 import axios from 'axios';
+import PrivateRoute from './Private Route/PrivateRoute';
 
 
 
@@ -36,7 +37,7 @@ const route = createBrowserRouter([
             },
             {
                 path: '/addJob',
-                element : <AddAJob></AddAJob>
+                element :<AddAJob></AddAJob>
             },
             {
                 path : '/myJobs',
@@ -47,8 +48,8 @@ const route = createBrowserRouter([
                 element : <AppliedJobs></AppliedJobs>
             },
             {
-                path : '/job/:id',
-                element : <JobDetails></JobDetails>,
+                path : '/details/:id',
+                element : <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
                 loader : ({params}) => fetch(`http://localhost:5000/jobById/${params.id}`)
             },
             {
@@ -63,7 +64,7 @@ const route = createBrowserRouter([
             {
                 path : '/update/:id',
                 element: <Update></Update>,
-                loader : ({params}) => axios.get(`http://loaclhost:5000/jobById/${params.id}`)
+                loader : ({params}) => axios.get(`http://localhost:5000/jobById/${params.id}`)
             }
         ]
     }

@@ -2,22 +2,36 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Auth Provider/AuthProvider';
 import Nav from '../../Components/Navbar/Navbar/Nav';
 import Card from './Card';
+import { useQuery } from '@tanstack/react-query';
+import useAxios from '../../Hooks/useAxios';
+
 
 const MyJobs = () => {
+    const axios = useAxios();
     const {user, loading} = useContext(AuthContext);
     const [myJobs, setMyJobs] = useState([]);
 
-    useEffect(() => {
-        if(user) { 
-            fetch(`http://localhost:5000/jobCategories?email=${user?.email}`, {credentials: 'include'})
-        .then(res => res.json())
-        .then(data => setMyJobs(data ))
+    // useEffect(() => {
+    //     if(user) { 
+    //         fetch(`http://localhost:5000/jobCategories?email=${user?.email}`, {credentials: 'include'})
+    //     .then(res => res.json())
+    //     .then(data => setMyJobs(data ))
+    //     }
+    //     return;
+    // }, [user]);
+
+    const {data, isLoading} = useQuery({
+        queryKey: ['myJob'],
+        queryFn : async (req, res) => {
+            const data  =  await axios.get(`/jobCategories?email=${user?.email}`)
+            const jobData = data.data;
+            return jobData;
         }
-        return;
-    }, [user]);
+    })
  
     
-    console.log(myJobs);
+    // console.log(myJobs);
+    console.log(data);
     return (
         <div>
             <Nav></Nav>
@@ -39,8 +53,8 @@ const MyJobs = () => {
         </tr>
        
       </thead>
-                {myJobs.length > 0 &&
-                    myJobs?.map(job => <Card key={job._id} job={job}></Card>)
+                {!loading &&
+                    data?.map(job => <Card key={job._id} job={job}></Card>)
                 }
                    </table>
                    </div>

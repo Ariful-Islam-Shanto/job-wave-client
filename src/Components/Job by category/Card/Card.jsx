@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Auth Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Card = ({job}) => {
+  const {user} = useContext(AuthContext);
   const navigate = useNavigate();
     
   const {_id,id,category,name,title,postDate,deadline,salary,applicants,description,location,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,companyWebsite, brandImage} = job || {};
@@ -27,7 +30,9 @@ const Card = ({job}) => {
         <p className="text-xs text-gray-600 flex items-center justify-between"><span>Post Date: {postDate}</span> <span>Deadline : {deadline}</span></p>
         <div className="card-actions flex-grow flex items-center justify-between">
           <button onClick={() => {
-                navigate(`/job/${_id}`);
+              
+                  navigate(`/details/${_id}`);
+              
           }} className=" text-xs text-white bg-[#0146B1] px-3 py-2">View details</button>
           <div className="badge bg-lime-200">Applied : {applicants}</div>
         </div>

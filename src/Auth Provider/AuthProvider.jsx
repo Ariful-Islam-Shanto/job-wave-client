@@ -15,11 +15,13 @@ const AuthProvider = ({children}) => {
     
     
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
     
    
     const userLogIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -27,6 +29,7 @@ const AuthProvider = ({children}) => {
     const googleProvider = new GoogleAuthProvider();
 
     const googleLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
@@ -59,9 +62,10 @@ const AuthProvider = ({children}) => {
             const userEmail = currentUser?.email || user?.email;
             const loggedUser = { email: userEmail };
             setUser(currentUser);
-            setLoading(false);
+           
 
             if (currentUser) {
+                setLoading(false);
                 axios
                   .post(
                     "/jwt",
@@ -70,6 +74,7 @@ const AuthProvider = ({children}) => {
                   )
                   .then((res) => {
                     console.log(res.data);
+                    
                   });
               }
               else {
@@ -82,8 +87,9 @@ const AuthProvider = ({children}) => {
                   .then((res) => {
                     console.log(res.data);
                   });
+                  setLoading(true); 
               }
-              setLoading(true); 
+              
         })
 
         return () => {

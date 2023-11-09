@@ -71,7 +71,7 @@ const AppliedJobs = () => {
     </div>
         </div>
         <div className="overflow-x-auto">
-          <table className="table max-w-xl">
+          <table className="table">
             {/* head */}
             <thead>
               <tr>

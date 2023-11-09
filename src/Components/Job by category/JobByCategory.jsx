@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import './Tabs.css';
 import Card from './Card/Card';
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+
 
 const JobByCategory = () => {
+    
     const [tabIndex, setTabIndex] = useState(0);
     const [category, setCategory] = useState('')
     const [categoryData, setCategoryData] = useState([])

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Auth Provider/AuthProvider';
 import { FaUser } from 'react-icons/fa6';
+import toast from 'react-hot-toast';
 
 const Table = ({job}) => {
     const navigate = useNavigate();
@@ -42,7 +43,8 @@ const Table = ({job}) => {
           <td>{salary}</td>
           <th className="flex flex-col items-center justify-center">
             <button onClick={() => {
-                navigate(`/job/${_id}`)
+                    navigate(`/details/${_id}`)
+                
             }} className="btn btn-ghost btn-xs">Details</button>
           </th>
         </tr>

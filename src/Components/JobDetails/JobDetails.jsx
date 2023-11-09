@@ -13,7 +13,7 @@ const JobDetails = () => {
     
     const {_id,id,category,name, email, title,postDate,deadline,salary,applicants,description,location,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,jobBanner,brandImage} = job || {};
 
-    console.log(skills);
+    console.log(job);
     const bg = {
         backgroundImage : `url(${jobBanner})`
     }
