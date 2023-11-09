@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../Auth Provider/AuthProvider';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://job-wave-server.vercel.app',
     withCredentials : true
   });
 

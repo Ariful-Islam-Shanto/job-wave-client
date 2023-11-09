@@ -78,7 +78,7 @@ const AuthProvider = ({children}) => {
                   });
               }
               else {
-                console.log('Log out');
+                setLoading(true); 
                 axios
                   .post(
                     "/clearCookie",
@@ -87,7 +87,7 @@ const AuthProvider = ({children}) => {
                   .then((res) => {
                     console.log(res.data);
                   });
-                  setLoading(true); 
+                 
               }
               
         })

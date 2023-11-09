@@ -37,7 +37,7 @@ const AddAJob = () => {
 
         console.log(data);
 
-        fetch(`http://localhost:5000/addAJob`,{credentials : 'include'} ,{
+        fetch(`https://job-wave-server.vercel.app/addAJob`,{credentials : 'include'} ,{
             method : "POST",
             headers : {
                 'content-type' : 'application/json'

@@ -16,14 +16,14 @@ const AppliedJobs = () => {
     // const {data : jobsData, isLoading, isError, error, refetch } = useQuery({
     //   queryKey : ['AllApplied'],
     //   queryFn : async () => {
-    //       const queryData = await fetch(`http://localhost:5000/appliedJobs?email=${user.email}&category=${category}`);
+    //       const queryData = await fetch(`https://job-wave-server.vercel.app/appliedJobs?email=${user.email}&category=${category}`);
     //       const result = await queryData.json();
     //       return result;
     //   }
     // })
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/appliedJobs?email=${user.email}&category=${category}`)
+        axios.get(`https://job-wave-server.vercel.app/appliedJobs?email=${user.email}&category=${category}`)
         .then(res => {
             setMyJobs(res.data);
         })

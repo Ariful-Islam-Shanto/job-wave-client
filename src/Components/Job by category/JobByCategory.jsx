@@ -14,7 +14,7 @@ const JobByCategory = () => {
     const categories = [ 'AllJobs', 'Remote', 'Hybrid', 'Part-Time', 'OnSite'];
 
     useEffect(() => {
-        fetch(`http://localhost:5000/jobCategories?category=${category}`, {credentials : 'include'})
+        fetch(`https://job-wave-server.vercel.app/jobCategories?category=${category}`, {credentials : 'include'})
     .then(res => res.json())
     .then(data => setCategoryData(data ))
     }, [category])
@@ -22,7 +22,7 @@ const JobByCategory = () => {
     // const {data : Data , isLoading, error, refetch} = useQuery({
     //     queryKey : ['allCategoriesData', ''],
     //     queryFn : async (key, category) => {
-    //         const response = await axios.get(`http://localhost:5000/jobCategories?category=${category}`)
+    //         const response = await axios.get(`https://job-wave-server.vercel.app/jobCategories?category=${category}`)
     //         const result = response.data;
     //         return result;
     //     }

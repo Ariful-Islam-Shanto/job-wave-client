@@ -13,7 +13,7 @@ const JobDetails = () => {
     // const job = useLoaderData();
     const {id : paramsId} = useParams();
     const location  = useLocation();
-    if(location.pathname === `/details/${id}` ) {
+    if(location.pathname === `/details/${paramsId}` ) {
         document.title = 'JOBWAVE | Details'
     }
 

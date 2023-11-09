@@ -12,7 +12,7 @@ const AllJobs = () => {
   const {data : jobsData, isLoading, isError, error, refetch } = useQuery({
     queryKey : ['AllJobs'],
     queryFn : async () => {
-        const queryData = await fetch(`http://localhost:5000/AllJobs?title=${title}`);
+        const queryData = await fetch(`https://job-wave-server.vercel.app/AllJobs?title=${title}`);
         const result = await queryData.json();
         return result;
     }

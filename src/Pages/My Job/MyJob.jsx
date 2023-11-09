@@ -13,7 +13,7 @@ const MyJobs = () => {
 
     // useEffect(() => {
     //     if(user) { 
-    //         fetch(`http://localhost:5000/jobCategories?email=${user?.email}`, {credentials: 'include'})
+    //         fetch(`https://job-wave-server.vercel.app/jobCategories?email=${user?.email}`, {credentials: 'include'})
     //     .then(res => res.json())
     //     .then(data => setMyJobs(data ))
     //     }

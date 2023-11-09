@@ -37,25 +37,25 @@ const route = createBrowserRouter([
             },
             {
                 path: '/addJob',
-                element :<AddAJob></AddAJob>
+                element : <PrivateRoute><AddAJob></AddAJob></PrivateRoute>
             },
             {
                 path : '/myJobs',
-                element : <MyJobs></MyJobs>
+                element : <PrivateRoute><MyJobs></MyJobs></PrivateRoute>
             },
             {
                 path : '/JobApplied',
-                element : <AppliedJobs></AppliedJobs>
+                element : <PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>
             },
             {
                 path : '/details/:id',
                 element : <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-                // loader : ({params}) => fetch(`http://localhost:5000/jobById/${params.id}`)
+                // loader : ({params}) => fetch(`https://job-wave-server.vercel.app/jobById/${params.id}`)
             },
             {
                 path : '/allJobs',
                 element : <AllJobs></AllJobs>,
-                loader : () => fetch('http://localhost:5000/jobCategories')
+                loader : () => fetch('https://job-wave-server.vercel.app/jobCategories')
             },
             {
                 path : '/blog',
@@ -64,7 +64,7 @@ const route = createBrowserRouter([
             {
                 path : '/update/:id',
                 element: <Update></Update>,
-                loader : ({params}) => axios.get(`http://localhost:5000/jobById/${params.id}`)
+                loader : ({params}) => axios.get(`https://job-wave-server.vercel.app/jobById/${params.id}`)
             }
         ]
     }
