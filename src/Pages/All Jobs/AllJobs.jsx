@@ -3,6 +3,7 @@ import Nav from "../../Components/Navbar/Navbar/Nav";
 import { useLoaderData } from "react-router-dom";
 import Table from "./Table/Table";
 import { useQuery } from "@tanstack/react-query";
+import useAxios from "../../Hooks/useAxios";
 
 const AllJobs = () => {
   const loderData = useLoaderData();

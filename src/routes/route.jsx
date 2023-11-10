@@ -55,7 +55,7 @@ const route = createBrowserRouter([
             {
                 path : '/allJobs',
                 element : <AllJobs></AllJobs>,
-                loader : () => fetch('https://job-wave-server.vercel.app/jobCategories')
+                // loader : () => fetch('https://job-wave-server.vercel.app/jobCategories')
             },
             {
                 path : '/blog',

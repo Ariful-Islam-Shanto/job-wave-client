@@ -106,7 +106,7 @@ isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
     {
       user ? <> 
       <div className='group flex items-center justify-center gap-3 mr-4'>
-      {user && <div className=''> <div className="avatar relative group">
+      {user && <div className=''> <div className="avatar flex relative group">
     <div className=" w-10 rounded-full group">
       {user.photoURL ? 
       <img src={user.photoURL} className='group'/>
@@ -114,7 +114,7 @@ isPending ? "pending" : isActive ? "text-[#0146B1]" : ""
         <FaUser className='h-full w-full group'></FaUser>
     }
 
-<div className={`group-hover:block hidden sm:absolute md:absolute lg:absolute xl:absolute top-12 right-1 bg-transparent rounded-md backdrop-blur-2xl`}>
+<div className={`group-hover:block hidden sm:absolute md:absolute lg:absolute xl:absolute top-12 right-0 bg-white p-6 z-40 rounded-md backdrop-blur-2xl w-[200px]  `}>
 
 <h1 className=' group-hover:block'>{user.displayName || user.email}</h1> 
 </div>

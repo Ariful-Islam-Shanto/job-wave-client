@@ -1,7 +1,7 @@
 <h1 align="center">Job Wave - Your Job Search and Posting Platform</h1>
 
 <p align="center">
-  [Live Demo](https://job-wave-9ad4d.web.app/)
+  [Live Demo](https://dazzling-cendol-e382a5.netlify.app/)
 </p>
 
 ## Overview

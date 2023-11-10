@@ -33,7 +33,7 @@ const Table = ({job}) => {
           <td>
             {title}
             <br/>
-            <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+           
           </td>
           <td>
             {postDate}
@@ -42,9 +42,10 @@ const Table = ({job}) => {
           </td>
           <td>{salary}</td>
           <th className="flex flex-col items-center justify-center">
-            <button onClick={() => {
-                navigate(`/job/${_id}`)
-            }} className="btn btn-ghost btn-xs">Details</button>
+            {/* <button onClick={() => {
+               navigate(`/details/${_id}`)
+            }} className="btn btn-ghost btn-xs">Details</button>  */}
+            {applicants}
           </th>
         </tr>
        

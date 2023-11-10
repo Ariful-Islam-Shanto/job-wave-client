@@ -1,7 +1,8 @@
 import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../Firebase/firebase.config';
-import useAxios from '../Hooks/useAxios';
+import axios from 'axios';
+// import useAxios from '../Hooks/useAxios';
 
 
 
@@ -9,7 +10,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({children}) => {
     // const [modeTheme, setModeTheme] = useState(null);
-    const axios = useAxios();
+    // const axios = useAxios();
     const [user, setUser] = useState([]);
     const [loading, setLoading] = useState(true);
     
@@ -68,9 +69,9 @@ const AuthProvider = ({children}) => {
                 setLoading(false);
                 axios
                   .post(
-                    "/jwt",
-                    loggedUser,
-                    { withCredentials: true }
+                    "https://job-wave-server.vercel.app/jwt",
+                    loggedUser
+                    , {withCredentials : true}
                   )
                   .then((res) => {
                     console.log(res.data);
@@ -81,8 +82,8 @@ const AuthProvider = ({children}) => {
                 setLoading(true); 
                 axios
                   .post(
-                    "/clearCookie",
-                    loggedUser
+                    "https://job-wave-server.vercel.app/clearCookie",
+                    loggedUser, {withCredentials : true}
                   )
                   .then((res) => {
                     console.log(res.data);

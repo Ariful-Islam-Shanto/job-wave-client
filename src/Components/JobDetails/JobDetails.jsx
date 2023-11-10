@@ -5,10 +5,11 @@ import { AuthContext } from '../../Auth Provider/AuthProvider';
 import toast from 'react-hot-toast';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import useAxios from '../../Hooks/useAxios';
+import axios from 'axios';
 
 const JobDetails = () => {
     const queryClient = useQueryClient();
-    const axios = useAxios();
+    // const axios = useAxios();
     const {user} = useContext(AuthContext);
     // const job = useLoaderData();
     const {id : paramsId} = useParams();
@@ -18,14 +19,16 @@ const JobDetails = () => {
     }
 
     const {data : job} = useQuery({
-        queryKey : ['detailsData'],
+        queryKey : ['detailsData', paramsId],
         queryFn : async () => {
-            const data = await axios.get(`jobById/${paramsId}`)
+            const data = await axios.get(`https://job-wave-server.vercel.app/jobById/${paramsId}`)
             const detailsData = data.data;
+            console.log(detailsData);
             return detailsData;
         }
     })
-    
+    console.log(job);
+
     const {_id,id,category,name, email, title,postDate,deadline,salary,applicants,description,location:jobLocation,skills,experienceLevel,employmentType,educationLevel,benefits,companyOverview,applicationProcess,jobBanner,brandImage} = job || {};
 
     const [totalApplicats, setTotalApplicants] = useState(applicants)

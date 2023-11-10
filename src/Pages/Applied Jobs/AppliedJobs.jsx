@@ -79,7 +79,7 @@ const AppliedJobs = () => {
                 <th>Job</th>
                 <th>Posted Date & Deadline</th>
                 <th>Salary</th>
-                <th>Actions</th>
+                <th>Applicants</th>
               </tr>
             </thead>
             { jobs.length > 0 && jobs?.map((job) => (

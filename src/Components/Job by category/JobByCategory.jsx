@@ -14,7 +14,7 @@ const JobByCategory = () => {
     const categories = [ 'AllJobs', 'Remote', 'Hybrid', 'Part-Time', 'OnSite'];
 
     useEffect(() => {
-        fetch(`https://job-wave-server.vercel.app/jobCategories?category=${category}`, {credentials : 'include'})
+        fetch(`https://job-wave-server.vercel.app/jobCategories?category=${category}`, {credentials : 'include'}, )
     .then(res => res.json())
     .then(data => setCategoryData(data ))
     }, [category])
