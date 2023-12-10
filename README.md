@@ -35,3 +35,10 @@ Job Wave is a web-based platform designed to streamline the job search, applicat
 7. **Blog Section**
    - A dedicated blog page provides informative content related to topics like JWT, Nest.js, and insights into the project's codebase.
 
+## Technologies Used
+
+- **Frontend:** **React.js** for building a dynamic and responsive user interface.
+- **Routing:** **React Router DOM** for handling navigation within the application.
+- **Styling:** **Tailwind CSS** and **DaisyUI** for creating a modern and visually appealing design.
+- **Authentication:** User authentication is implemented using Firebase authentication.
+- **Database:** Firebase is used as the database for storing user data, job listings, and application information.
